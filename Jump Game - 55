@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int canJump(vector<int>& nums) {
+        int greedy = nums.size() - 1;
+        for(int i=nums.size()-1;i>=0;i--)
+        {
+            if(i + nums[i] >= greedy)
+                greedy=i;
+        }
+        if(greedy==0)
+            return true;
+        else
+            return false;
+    }
+};
+
+//Using Greedy algorithm
