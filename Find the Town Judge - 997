@@ -21,3 +21,7 @@ public:
         return ans;
     }
 };
+
+
+Time Complexity - O(n)
+Space complexity - O(n)
