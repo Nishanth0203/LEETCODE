@@ -1,0 +1,26 @@
+class Solution {
+public:
+
+    bool dfs(vector<vector<int>>&graph, vector<int>& colors, int vertex, int color) {
+        colors[vertex] = color;
+        for(int neighbour : graph[vertex]) {
+            if(colors[neighbour] == color)
+                return false;
+            if(colors[neighbour] == -1 &&!dfs(graph,colors,neighbour,1-color))
+                return false;
+        }
+        return true;
+    }
+    bool isBipartite(vector<vector<int>>& graph) {
+        int numVertices = graph.size();
+        vector<int>colors(numVertices,-1);
+
+        for(int vertex =0; vertex < numVertices; vertex++) {
+            if(colors[vertex] == -1) {
+                if(!dfs(graph,colors,vertex,0))
+                    return false;
+            }
+        }
+        return true;
+    }
+};
